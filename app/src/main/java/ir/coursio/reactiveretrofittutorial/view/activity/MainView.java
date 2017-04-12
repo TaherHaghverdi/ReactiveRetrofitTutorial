@@ -1,5 +1,8 @@
 package ir.coursio.reactiveretrofittutorial.view.activity;
 
+import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+
 import ir.coursio.reactiveretrofittutorial.model.api.Responses.JokeListResponse;
 import ir.coursio.reactiveretrofittutorial.view.adapter.JokeAdapter;
 
@@ -9,9 +12,10 @@ import ir.coursio.reactiveretrofittutorial.view.adapter.JokeAdapter;
  */
 
 public interface MainView {
-    void getPermissions();
 
     void makeAdapter(JokeListResponse response);
 
-    void initRecyclerView();
+    AppCompatActivity getActivity();
+
+    Context getAppContext();
 }

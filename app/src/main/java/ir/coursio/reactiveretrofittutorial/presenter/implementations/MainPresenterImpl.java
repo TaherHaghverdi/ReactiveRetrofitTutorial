@@ -1,11 +1,16 @@
 package ir.coursio.reactiveretrofittutorial.presenter.implementations;
 
+import android.Manifest;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import ir.coursio.reactiveretrofittutorial.api.ApiService;
 import ir.coursio.reactiveretrofittutorial.model.api.Responses.JokeListResponse;
 import ir.coursio.reactiveretrofittutorial.presenter.interfaces.MainPresenter;
+import ir.coursio.reactiveretrofittutorial.utils.PermissionHandler;
 import ir.coursio.reactiveretrofittutorial.view.activity.MainView;
 
 /**
@@ -32,8 +37,6 @@ public class MainPresenterImpl implements MainPresenter {
         error.printStackTrace();
     }
 
-
-
     @Override
     public void getJokes(ApiService service) {
 
@@ -41,6 +44,25 @@ public class MainPresenterImpl implements MainPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::handleResponse, this::handleError));
+    }
+
+    @Override
+    public RecyclerView.LayoutManager getRecyclerViewLayoutManager() {
+        return new LinearLayoutManager(mainView.getAppContext());
+    }
+
+    @Override
+    public void getPermissions() {
+        String[] permissions = {Manifest.permission.INTERNET};
+        new PermissionHandler().checkPermission(mainView.getActivity(), permissions, new PermissionHandler.OnPermissionResponse() {
+            @Override
+            public void onPermissionGranted() {
+            }
+
+            @Override
+            public void onPermissionDenied() {
+            }
+        });
     }
 
     @Override

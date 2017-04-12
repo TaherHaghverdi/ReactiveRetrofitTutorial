@@ -1,7 +1,9 @@
 package ir.coursio.reactiveretrofittutorial.view.activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -36,11 +38,11 @@ public class MainActivity extends BaseActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        getPermissions();
         service = ApiClient.getClient().create(ApiService.class);
-        initRecyclerView();
 
         presenter = new MainPresenterImpl(this);
+        presenter.getPermissions();
+        recyclerView.setLayoutManager(presenter.getRecyclerViewLayoutManager());
     }
 
 
@@ -66,23 +68,14 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void initRecyclerView() {
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
+    public AppCompatActivity getActivity() {
+        return MainActivity.this;
     }
 
     @Override
-    public void getPermissions() {
-        String[] permissions = {Manifest.permission.INTERNET};
-        new PermissionHandler().checkPermission(MainActivity.this, permissions, new PermissionHandler.OnPermissionResponse() {
-            @Override
-            public void onPermissionGranted() {
-            }
-
-            @Override
-            public void onPermissionDenied() {
-            }
-        });
+    public Context getAppContext() {
+        return getApplicationContext();
     }
+
 
 }
