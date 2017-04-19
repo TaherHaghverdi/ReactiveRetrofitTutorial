@@ -1,10 +1,8 @@
 package ir.coursio.reactiveretrofittutorial.view.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 
@@ -15,9 +13,8 @@ import ir.coursio.reactiveretrofittutorial.R;
 import ir.coursio.reactiveretrofittutorial.api.ApiClient;
 import ir.coursio.reactiveretrofittutorial.api.ApiService;
 import ir.coursio.reactiveretrofittutorial.model.api.Responses.JokeListResponse;
-import ir.coursio.reactiveretrofittutorial.presenter.interfaces.MainPresenter;
-import ir.coursio.reactiveretrofittutorial.presenter.implementations.MainPresenterImpl;
-import ir.coursio.reactiveretrofittutorial.utils.PermissionHandler;
+import ir.coursio.reactiveretrofittutorial.presenter.MainPresenter;
+import ir.coursio.reactiveretrofittutorial.presenter.MainPresenterImpl;
 import ir.coursio.reactiveretrofittutorial.view.BaseActivity;
 import ir.coursio.reactiveretrofittutorial.view.adapter.JokeAdapter;
 

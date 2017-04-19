@@ -1,4 +1,4 @@
-package ir.coursio.reactiveretrofittutorial.presenter.interfaces;
+package ir.coursio.reactiveretrofittutorial.presenter;
 
 import android.support.v7.widget.RecyclerView;
 

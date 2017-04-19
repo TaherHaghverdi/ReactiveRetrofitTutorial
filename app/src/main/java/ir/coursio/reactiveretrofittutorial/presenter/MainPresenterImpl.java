@@ -1,4 +1,4 @@
-package ir.coursio.reactiveretrofittutorial.presenter.implementations;
+package ir.coursio.reactiveretrofittutorial.presenter;
 
 import android.Manifest;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +9,6 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 import ir.coursio.reactiveretrofittutorial.api.ApiService;
 import ir.coursio.reactiveretrofittutorial.model.api.Responses.JokeListResponse;
-import ir.coursio.reactiveretrofittutorial.presenter.interfaces.MainPresenter;
 import ir.coursio.reactiveretrofittutorial.utils.PermissionHandler;
 import ir.coursio.reactiveretrofittutorial.view.activity.MainView;
 
